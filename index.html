@@ -19,9 +19,30 @@ color:white;
 line-height:1.7;
 }
 
-header{
+.hero{
+position:relative;
+}
+
+.banner{
+width:100%;
+height:420px;
+object-fit:cover;
+display:block;
+}
+
+.hero header{
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
 text-align:center;
-padding:80px 20px;
+background:rgba(0,0,0,.45);
+padding:20px;
 }
 
 header h1{
@@ -109,6 +130,10 @@ transform:scale(1.08);
 </head>
 <body>
 
+<div class="hero">
+
+<img src="electronova.png" alt="Banner Electro-Nova" class="banner">
+
 <header>
 
 <h1>⚡ Electro-Nova ⚡</h1>
@@ -124,6 +149,8 @@ Nuestro compromiso es brindar un servicio confiable, eficiente y profesional.
 <button>Solicitar Servicio</button>
 
 </header>
+
+</div>
 
 <section>
 
@@ -223,4 +250,4 @@ priorizando siempre la seguridad y la satisfacción del cliente.
 </footer>
 
 </body>
-</html>
+</html></html>
