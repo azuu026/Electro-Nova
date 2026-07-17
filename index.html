@@ -20,29 +20,22 @@ line-height:1.7;
 }
 
 .hero{
-position:relative;
-}
-
-.banner{
-width:100%;
-height:420px;
-object-fit:cover;
-display:block;
+background:
+linear-gradient(rgba(0,0,0,.55), rgba(0,0,0,.55)),
+url("electronova.png");
+background-size:cover;
+background-position:center;
+background-repeat:no-repeat;
+min-height:550px;
+display:flex;
+justify-content:center;
+align-items:center;
+padding:40px 20px;
 }
 
 .hero header{
-position:absolute;
-top:0;
-left:0;
-width:100%;
-height:100%;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
 text-align:center;
-background:rgba(0,0,0,.45);
-padding:20px;
+max-width:900px;
 }
 
 header h1{
@@ -131,8 +124,6 @@ transform:scale(1.08);
 <body>
 
 <div class="hero">
-
-<img src="electronova.png" alt="Banner Electro-Nova" class="banner">
 
 <header>
 
