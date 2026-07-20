@@ -1,4 +1,4 @@
-// Configuración oficial de Supabase para Electro-Nova
+// Configuración oficial de Supabase para ElectroNova
 const SUPABASE_URL = 'https://pmovlxvsilpxpwwiozen.supabase.co';
 const SUPABASE_KEY = 'EyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBtb3ZseHZzaWxweHB3d2lvemVuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODQ1NjgyMjksImV4cCI6MjEwMDE0NDIyOX0.3Bdnm1SPTLuBk74Dg-q_mFZqBvYdO3eG8SDHrWLLSIY';
 
