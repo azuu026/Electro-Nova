@@ -1115,4 +1115,77 @@ ul {
     transform: scale(1.1);
     box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.4);
 }
+/* --- SECCIÓN DE OPINIONES --- */
+.reviews-section {
+    background-color: #f7fafc;
+    padding: 60px 0;
+}
+
+.reviews-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-top: 40px;
+}
+
+@media (max-width: 768px) {
+    .reviews-wrapper {
+        grid-template-columns: 1fr; /* En celulares se pone una columna sobre otra */
+    }
+}
+
+/* Tarjeta del Formulario */
+.review-form-card {
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.review-form-card h3 {
+    margin-bottom: 20px;
+    color: #2d3748;
+}
+
+/* Lista de Comentarios */
+.reviews-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-height: 500px;
+    overflow-y: auto; /* Permite hacer scroll si hay muchas opiniones */
+    padding-right: 10px;
+}
+
+/* Tarjeta individual de Comentario */
+.review-card {
+    background: #ffffff;
+    padding: 18px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    border-left: 4px solid #3182ce; /* Detalle de color azul Electro-Nova */
+}
+
+.review-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.review-author {
+    font-weight: bold;
+    color: #2d3748;
+}
+
+.review-stars {
+    font-size: 0.9rem;
+}
+
+.review-body {
+    color: #4a5568;
+    font-size: 0.95rem;
+    line-height: 1.4;
+    margin: 0;
+}
 
