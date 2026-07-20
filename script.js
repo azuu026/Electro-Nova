@@ -1,20 +1,21 @@
-// 1. Datos de conexión de Supabase (los obtienes en Settings -> API de Supabase)
-const SUPABASE_URL = 'https://TU_SUPABASE_URL.supabase.co';
-const SUPABASE_KEY = 'TU_SUPABASE_ANON_KEY';
+// Configuración oficial de Supabase para Electro-Nova
+const SUPABASE_URL = 'https://pmovlxvsilpxpwwiozen.supabase.co';
+const SUPABASE_KEY = 'EyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBtb3ZseHZzaWxweHB3d2lvemVuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODQ1NjgyMjksImV4cCI6MjEwMDE0NDIyOX0.3Bdnm1SPTLuBk74Dg-q_mFZqBvYdO3eG8SDHrWLLSIY';
 
+// Inicializar Supabase en el navegador
 const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
 const commentForm = document.getElementById('comment-form');
 const reviewsContainer = document.getElementById('reviews-container');
 
-// 2. Cargar opiniones existentes al abrir la página
+// 1. Cargar comentarios guardados desde la base de datos
 async function loadReviews() {
     if (!reviewsContainer) return;
 
     const { data: opiniones, error } = await supabase
         .from('opiniones')
         .select('*')
-        .order('created_at', { ascending: false });
+        .order('id', { ascending: false });
 
     if (error) {
         console.error('Error al cargar comentarios:', error);
@@ -24,7 +25,7 @@ async function loadReviews() {
     renderReviews(opiniones);
 }
 
-// 3. Función para dibujar los comentarios en la pantalla
+// 2. Dibujar las tarjetas de opinión en la pantalla
 function renderReviews(opiniones) {
     reviewsContainer.innerHTML = '';
 
@@ -48,7 +49,7 @@ function renderReviews(opiniones) {
     });
 }
 
-// 4. Guardar un nuevo comentario al enviar el formulario
+// 3. Guardar un nuevo comentario al hacer clic en "Publicar"
 if (commentForm) {
     commentForm.addEventListener('submit', async (e) => {
         e.preventDefault();
@@ -64,24 +65,25 @@ if (commentForm) {
             ]);
 
         if (error) {
-            console.error('Error al guardar:', error);
-            alert('Ocurrió un error al publicar tu opinión.');
+            console.error('Error al guardar la opinión:', error);
+            alert('Ocurrió un error al publicar tu opinión. Revisa la consola.');
         } else {
-            alert('¡Gracias! Tu opinión ha sido publicada.');
+            alert('¡Gracias! Tu opinión ha sido publicada exitosamente.');
             commentForm.reset();
+            loadReviews(); // Actualiza la lista en pantalla
         }
     });
 }
 
-// 5. ESCUCHAR EN TIEMPO REAL nuevos comentarios
+// 4. Escuchar en tiempo real nuevos comentarios
 supabase
     .channel('public:opiniones')
     .on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'opiniones' }, () => {
-        loadReviews(); // Recarga automáticamente la lista cuando alguien publica
+        loadReviews();
     })
     .subscribe();
 
-// Función de seguridad contra script malicioso (XSS)
+// Función de seguridad contra vulnerabilidades web (XSS)
 function escapeHTML(str) {
     return str ? str.replace(/[&<>'"]/g, 
         tag => ({
@@ -94,5 +96,5 @@ function escapeHTML(str) {
     ) : '';
 }
 
-// Inicializar la carga de comentarios
+// Cargar opiniones al abrir la página
 loadReviews();
